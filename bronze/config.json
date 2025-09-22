@@ -1,0 +1,17 @@
+[
+  {
+    "file_path": "/Volumes/workspace/default/vol_pei_data/Customer.xlsx",
+    "file_type": "excel",
+    "table_name": "raw_customers"
+  },
+  {
+    "file_path": "/Volumes/workspace/default/vol_pei_data/Orders.json",
+    "file_type": "json",
+    "table_name": "raw_orders"
+  },
+  {
+    "file_path": "/Volumes/workspace/default/vol_pei_data/Products.csv",
+    "file_type": "csv",
+    "table_name": "raw_products"
+  }
+]

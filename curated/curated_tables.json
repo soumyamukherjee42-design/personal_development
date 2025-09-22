@@ -1,0 +1,84 @@
+{
+  "curated_tables": [
+    {
+      "table_name": "customer_master",
+      "source_table": "raw_customers",
+      "columns": [
+        "customer_id",
+        "customer_name",
+        "email",
+        "phone",
+        "segment"
+      ],
+      "deduplicate_on": "customer_id"
+    },
+    {
+      "table_name": "customer_address",
+      "source_table": "raw_customers",
+      "columns": [
+        "customer_id",
+        "address",
+        "city",
+        "state",
+        "postal_code",
+        "country",
+        "region"
+      ],
+      "deduplicate_on": "customer_id"
+    },
+    {
+      "table_name": "products",
+      "source_table": "raw_products",
+      "columns": [
+        "product_id",
+        "category",
+        "sub_category",
+        "product_name",
+        "state",
+        "price_per_product"
+      ],
+      "deduplicate_on": "product_id"
+    },
+    {
+      "table_name": "order_header",
+      "source_table": "raw_orders",
+      "columns": [
+        "order_id",
+        "order_date",
+        "ship_date",
+        "ship_mode",
+        "customer_id"
+      ],
+      "deduplicate_on": "order_id"
+    },
+    {
+      "table_name": "order_details",
+      "source_table": "raw_orders",
+      "columns": [
+        {
+          "alias": "row_id",
+          "expr": "CAST(row_id AS BIGINT)"
+        },
+        "order_id",
+        "product_id",
+        {
+          "alias": "quantity",
+          "expr": "CAST(quantity AS BIGINT)"
+        },
+        {
+          "alias": "price",
+          "expr": "CAST(price AS DOUBLE)"
+        },
+        {
+          "alias": "discount",
+          "expr": "CAST(discount AS DOUBLE)"
+        },
+        {
+          "alias": "profit",
+          "expr": "ROUND(CAST(profit AS DOUBLE), 2)"
+        }
+      ],
+      "deduplicate_on": "order_id"
+    }
+  ]
+}
