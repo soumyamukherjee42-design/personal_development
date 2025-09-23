@@ -1,5 +1,6 @@
 import pandas as pd
 import pytest
+from tests.conftest import spark
 from pyspark.sql import Row
 from bronze.data_cleaning import clean_column_names, enforce_string_for_object_columns
 
