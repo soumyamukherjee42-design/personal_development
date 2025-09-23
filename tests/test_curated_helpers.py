@@ -1,11 +1,11 @@
 import pytest
 from pyspark.sql.types import StructType, StructField, IntegerType, StringType
-from tests.conftest import spark
 from curated.save_table import save_as_curated_table
-# from tests.conftest import spark
+from pyspark.sql import SparkSession
 
-# spark_session = spark()
-def test_save_as_curated_table_creates_table(spark_session):
+spark = SparkSession.getActiveSession() or SparkSession.builder.getOrCreate()
+
+def test_save_as_curated_table_creates_table():
     # Define test data and schema
     data = [(1, "A"), (2, "B")]
     schema = StructType([

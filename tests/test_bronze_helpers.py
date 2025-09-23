@@ -1,8 +1,10 @@
 import pandas as pd
 import pytest
-from tests.conftest import spark
 from pyspark.sql import Row
 from bronze.data_cleaning import clean_column_names, enforce_string_for_object_columns
+from pyspark.sql import SparkSession
+
+spark = SparkSession.getActiveSession() or SparkSession.builder.getOrCreate()
 
 def test_clean_column_names_pandas():
     # Given: a Pandas DataFrame with messy column names
@@ -36,7 +38,7 @@ def test_enforce_string_for_object_columns():
     assert all(isinstance(x, str) for x in result_df["mixed"])
 
 
-def test_clean_column_names_spark(spark):
+def test_clean_column_names_spark():
     # Given: a Spark DataFrame with messy column names
     data = [(1, 2, 3, 4, 5)]
     columns = [" Col 1 ", "Col-2", "col 3__", "eq=name", " weird(name)"]
